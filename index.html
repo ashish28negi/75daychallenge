@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>75 Days Hard Challenge</title>
+	<style>
+		body {
+			background-image: url('exercises.jpeg');
+			background-size: cover;
+			color: #d10b0b;
+			font-family: Arial, sans-serif;
+			font-size: 16px;
+			line-height: 1.5;
+			margin: 0;
+			padding: 0;
+			text-align: center;
+		}
+		h1 {
+			color: #000000;
+			font-size: 32px;
+			margin-top: 50px;
+		}
+		p {
+			color: #061a8e;
+			font-size: 20px;
+			margin-top: 30px;
+		}
+		.countdown {
+			color: #131313;
+			font-size: 64px;
+			margin-top: 50px;
+		}
+		.start-button {
+			background-color: #f00;
+			border: none;
+			color: #ffffff;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin-top: 30px;
+			cursor: pointer;
+		}
+		.rules {
+			color: #ffffff;
+			padding: 20px;
+			margin-top: 50px;
+			text-align: center;
+		}
+		.rules h2 {
+			color: #ffffff;
+			font-size: 34px;
+			margin-top: 0;
+		}
+		.rules ul {
+			margin-top: 10px;
+			padding-left: 20px;
+		}
+		.rules li {
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+	<h1>75 Days Hard Challenge</h1>
+	<div class="rules">
+		<h2>General Rules:</h2>
+		<ul>
+			<li><h2>Follow a diet with no cheat meals</h2></li>
+			<li><h2>Drink at least 1 gallon of water per day</h2></li>
+			<li><h2>Exercise twice a day for at least 45 minutes each time</h2></li>
+			<li><h2>Read 10 pages of a non-fiction book per day</h2></li>
+			<li><h2>Take a progress picture every day</h2></li>
+			<li><h2>No alcohol or cheat meals</h2></li>
+		</ul>
+	</div>
+	<button class="start-button" onclick="startChallenge()">Start Challenge</button>
+	<p>Countdown:</p>
+	<div class="countdown" id="countdown"></div>
+	<script>
+		var countDownDate;
+		function startChallenge() {
+			countDownDate = new Date().getTime() + (75 * 24 * 60 * 60 * 1000);
+			document.getElementById("countdown").style.display = "block";
+			document.getElementsByClassName("start-button")[0].style.display = "none";
+			var x = setInterval(function() {
+				var now = new Date().getTime();
+				var distance = countDownDate - now;
+				var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+				document.getElementById("countdown").innerHTML = days + " days remaining";
+				if (distance < 0) {
+					clearInterval(x);
+					document.getElementById("countdown").innerHTML = "EXPIRED";
+				}
+			}, 1000);
+		}
+	</script>
+</body>
+</html>
